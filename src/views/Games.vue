@@ -1,13 +1,18 @@
 <template>
   <div id="games">
     <img alt="Gamify Logo" src="../assets/logo.png" />
+    <tictactoe />
   </div>
 </template>
 
 <script>
+import tictactoe from "../components/TicTacToe.vue";
+
 export default {
   name: "Main",
-  components: {},
+  components: {
+    tictactoe,
+  },
 };
 </script>
 
