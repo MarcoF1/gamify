@@ -2,7 +2,12 @@
   <div id="main">
     <img alt="Gamify Logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Gamify" />
-    <Button msg="Enter" v-on:click.native="enterGames" />
+    <Button
+      msg="Enter"
+      v-on:click.native="enterGames('tictactoe')"
+      id="button"
+    />
+    <Button msg="Exit" v-on:click.native="enterGames('tetris')" id="button" />
   </div>
 </template>
 
@@ -17,8 +22,8 @@ export default {
     Button,
   },
   methods: {
-    enterGames: function() {
-      this.$router.push("Games");
+    enterGames: function(game) {
+      this.$router.push(game);
     },
   },
 };
@@ -32,5 +37,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#button {
+  margin: 5px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="games">
+  <div id="tictactoe">
     <img alt="Gamify Logo" src="../assets/logo.png" />
     <tictactoe />
   </div>
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style>
-#games {
+#tictactoe {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

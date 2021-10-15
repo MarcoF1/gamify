@@ -12,9 +12,14 @@ export default new Router({
       component: () => import("./views/Main.vue"),
     },
     {
-      path: "/games",
-      name: "games",
-      component: () => import("./views/Games.vue"),
+      path: "/tictactoe",
+      name: "tictactoe",
+      component: () => import("./views/tictactoe.vue"),
+    },
+    {
+      path: "/tetris",
+      name: "tetris",
+      component: () => import("./views/tetris.vue"),
     },
   ],
 });
