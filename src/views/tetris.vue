@@ -1,15 +1,17 @@
 <template>
-  <div class="tetris">
-    <player
+  <div id="tetris">
+    <img alt="Gamify Logo" src="../assets/logo.png" />
+    <br />
+    <!-- <player
       :stage="stage"
       :keys="{ straight: 32, left: 37, rotate: 38, right: 39, down: 40 }"
       ref="player"
-    />
+    /> -->
   </div>
 </template>
 
 <script>
-import player from "../components/TetrisPlayer.vue";
+// import player from "../components/TetrisPlayer.vue";
 import stageComputed from "../stageComputed";
 
 export default {
@@ -209,6 +211,17 @@ export default {
       },
     };
   },
-  components: { player },
+  components: {},
 };
 </script>
+
+<style scoped>
+#tetris {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
