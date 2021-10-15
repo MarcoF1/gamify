@@ -44,15 +44,15 @@
       <div class="score">
         <div class="row">
           <h4 class="title">Level</h4>
-          <span>{{ level | numberComma }}</span>
+          <span>{{ level }}</span>
         </div>
         <div class="row">
           <h4 class="title">Score</h4>
-          <span>{{ score | numberComma }}</span>
+          <span>{{ score }}</span>
         </div>
         <div class="row">
           <h4 class="title">Rows</h4>
-          <span>{{ rowCleared | numberComma }}</span>
+          <span>{{ rowCleared }}</span>
         </div>
       </div>
       <div class="statistics">
@@ -60,9 +60,7 @@
         <div :key="key" v-for="(value, key) in statistics" class="block">
           <span class="symbol">{{ key }}</span>
           <span class="number">{{ value }}</span>
-          <span class="rate"
-            >{{ ((value / statistics.TOTAL) * 100 || 0) | round(2) }}%</span
-          >
+          <span class="rate">{{ (value / statistics.TOTAL) * 100 || 0 }}%</span>
         </div>
       </div>
       <div class="buttons">
@@ -72,7 +70,6 @@
         <button v-else @click="start" autofocus>
           {{ state.gameover ? "Restart" : "Start" }}
         </button>
-        <button @click="muteSound">mute</button>
       </div>
       <h2 class="state">{{ stateText }}</h2>
     </div>
@@ -146,9 +143,7 @@ export default {
     playBgm(type = `bgm${(this.level % 4) + 1}`, isRepeat = true) {
       this.playSound(type, isRepeat);
     },
-    playFX(name) {
-      this.playEffect(name);
-    },
+    playFX(name) {},
     start() {
       if (this.state.playing) return;
       this.reset();
