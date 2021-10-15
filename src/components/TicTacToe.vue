@@ -1,26 +1,36 @@
 <template>
-  <div class="tictactoe-board">
-    <cell @click="performMove(0, 0)" :value="board.cells[0][0]"></cell>
-    <cell @click="performMove(0, 1)" :value="board.cells[0][1]"></cell>
-    <cell @click="performMove(0, 2)" :value="board.cells[0][2]"></cell>
-    <cell @click="performMove(1, 0)" :value="board.cells[1][0]"></cell>
-    <cell @click="performMove(1, 1)" :value="board.cells[1][1]"></cell>
-    <cell @click="performMove(1, 2)" :value="board.cells[1][2]"></cell>
-    <cell @click="performMove(2, 0)" :value="board.cells[2][0]"></cell>
-    <cell @click="performMove(2, 1)" :value="board.cells[2][1]"></cell>
-    <cell @click="performMove(2, 2)" :value="board.cells[2][2]"></cell>
-    <div class="game-over-text" v-if="gameOver">
-      {{ gameOverText }}
+  <div>
+    <div class="heading">
+      <h1>Tic-Tac-Toe</h1>
+    </div>
+    <div class="tictactoe-board">
+      <cell @click="performMove(0, 0)" :value="board.cells[0][0]"></cell>
+      <cell @click="performMove(0, 1)" :value="board.cells[0][1]"></cell>
+      <cell @click="performMove(0, 2)" :value="board.cells[0][2]"></cell>
+      <cell @click="performMove(1, 0)" :value="board.cells[1][0]"></cell>
+      <cell @click="performMove(1, 1)" :value="board.cells[1][1]"></cell>
+      <cell @click="performMove(1, 2)" :value="board.cells[1][2]"></cell>
+      <cell @click="performMove(2, 0)" :value="board.cells[2][0]"></cell>
+      <cell @click="performMove(2, 1)" :value="board.cells[2][1]"></cell>
+      <cell @click="performMove(2, 2)" :value="board.cells[2][2]"></cell>
+      <div class="game-over-text" v-if="gameOver">
+        {{ gameOverText }}
+        <br />
+        <br />
+        <Button msg="Play Again" v-on:click.native="resetGame" />
+      </div>
     </div>
   </div>
 </template>
 <script>
 import Board from "../Board";
 import cell from "../components/Cell.vue";
+import Button from "../components/Button.vue";
 
 export default {
   components: {
     cell,
+    Button,
   },
   data() {
     return {
@@ -30,6 +40,12 @@ export default {
     };
   },
   methods: {
+    resetGame() {
+      // this.board.resetGame();
+      this.board = new Board();
+      this.gameOver = false;
+      this.$forceUpdate();
+    },
     performMove(x, y) {
       if (this.gameOver) {
         return;
@@ -46,6 +62,7 @@ export default {
           : "Draw";
         return;
       }
+
       let aiMove = this.minimax(this.board.clone(), "o");
       this.board.doMove(aiMove.move.x, aiMove.move.y, "o");
       if (this.board.isGameOver()) {
@@ -100,9 +117,24 @@ export default {
 </script>
 <style>
 .tictactoe-board {
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   width: 204px;
   height: 204px;
+}
+.game-over-text {
+  font-weight: bold;
+  color: red;
+  width: 204px;
+  font-size: 16px;
+  text-align: center;
+  padding-top: 12px;
+}
+.heading {
+  margin: 0 auto;
+  text-align: center;
+  width: 320px;
+  color: green;
 }
 </style>
