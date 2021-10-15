@@ -3,11 +3,15 @@
     <img alt="Gamify Logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Gamify" />
     <Button
-      msg="Enter"
+      msg="Enter TicTacToe"
       v-on:click.native="enterGames('tictactoe')"
       id="button"
     />
-    <Button msg="Exit" v-on:click.native="enterGames('tetris')" id="button" />
+    <Button
+      msg="Enter Tetris"
+      v-on:click.native="enterGames('tetris')"
+      id="button"
+    />
   </div>
 </template>
 
